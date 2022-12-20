@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./proto";
+
+service AuthReg {
+  rpc CheckAuthorization(CheckAuthRequest) returns (CheckAuthResponse) {}
+  rpc GetUserCredentials(UserCredentialsRequest) returns (UserCredentialsResponse) {}
+}
+
+message CheckAuthRequest {
+  string bearer = 1;
+}
+
+message CheckAuthResponse {
+  bool result = 1;
+  string error = 2;
+}
+
+message UserCredentialsRequest {
+  string bearer = 1;
+}
+
+message UserCredentialsResponse {
+  string email = 1;
+  string error = 2;
+}
